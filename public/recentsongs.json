@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Song title 1",
+    "artist": "Artist 1",
+    "length": "3:28",
+    "artwork_url": "https://via.placeholder.com/400x400/386641/6A994E?text=The+Memory+of+Trees"
+  },
+  {
+    "name": "Song title 2",
+    "artist": "Artist 2",
+    "length": "3:28",
+    "artwork_url": "https://via.placeholder.com/400x400/386641/6A994E?text=The+Memory+of+Trees"
+  },
+  {
+    "name": "Song title 3",
+    "artist": "Artist 3",
+    "length": "3:28",
+    "artwork_url": "https://via.placeholder.com/400x400/386641/6A994E?text=The+Memory+of+Trees"
+  }
+]
