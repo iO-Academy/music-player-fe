@@ -1,0 +1,23 @@
+{
+  "name": "Billie Eilish",
+  "albums": [
+    {
+      "name": "When We All Fall Asleep, Where Do We Go?",
+      "songs": [
+        "bad guy",
+        "bury a friend",
+        "you should see me in a crown"
+      ],
+      "artwork_url": "https://via.placeholder.com/400x400/386641/6A994E?text=The+Memory+of+Trees"
+    },
+    {
+      "name": "Happier Than Ever",
+      "songs": [
+        "NDA",
+        "Therefore I Am",
+        "Happier Than Ever"
+      ],
+      "artwork_url": "https://via.placeholder.com/400x400/386641/6A994E?text=The+Memory+of+Trees"
+    }
+  ]
+}

@@ -23,6 +23,7 @@ function RecentlyPlayed({playSong}) {
             <h5 className="mb-3">Recently Played Songs</h5>
             {songs && songs.map(song =>
                     <Song
+                        key={song.name}
                         name={song.name}
                         subhead={song.artist}
                         artist={song.artist}

@@ -2,47 +2,30 @@ import {
     Link
 } from "react-router-dom";
 import Album from "../Album";
+import {useEffect, useState} from "react";
+import Loading from "../Loading";
 
 function PopularAlbums() {
 
-    const albums = [
-        {
-            "artist": "Billie Eilish",
-            "name": "When We All Fall Asleep, Where Do We Go?",
-            "songs": [
-                "bad guy",
-                "bury a friend",
-                "you should see me in a crown"
-            ],
-            "artwork_url": "https://via.placeholder.com/50x50/386641/6A994E?text=The+Memory+of+Trees"
-        }    ,
-        {
-            "artist": "Taylor Swift",
-            "name": "Lover",
-            "songs": [
-                "ME!",
-                "You Need To Calm Down",
-                "Lover"
-            ],
-            "artwork_url": "https://via.placeholder.com/50x50/386641/6A994E?text=The+Memory+of+Trees"
-        },
-        {
-            "artist": "Ed Sheeran",
-            "name": "÷",
-            "songs": [
-                "Shape of You",
-                "Castle on the Hill",
-                "Galway Girl"
-            ],
-            "artwork_url": "https://via.placeholder.com/50x50/386641/6A994E?text=The+Memory+of+Trees"
-        }
-    ]
+    const [albums, setAlbums] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
+
+    const fetchAlbums = async () => {
+        const response = await fetch('popularAlbums.json')
+        const albums = await response.json()
+        setAlbums(albums)
+        setIsLoading(false)
+    }
+
+    useEffect(() => {
+        fetchAlbums()
+    }, [])
 
     return (
         <div className="col">
             <h5 className="mb-3">Most Popular Albums</h5>
 
-            {albums.map(album =>
+            {albums && albums.map(album =>
                 <Album
                     key={album.name}
                     name={album.name}
@@ -50,6 +33,8 @@ function PopularAlbums() {
                     artistName={album.artist}
                 />
             )}
+
+            {isLoading && <Loading />}
 
         </div>
     );

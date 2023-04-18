@@ -6,7 +6,7 @@ function Song({name, subhead, length, playSong, artist, artwork}) {
                 <h6 className="mb-0">{name}</h6>
                 <small>{subhead}</small>
             </div>
-            <div>
+            <div className={"mx-2"}>
                 <small className="text-white-50">{length}</small>
             </div>
             <div className="fs-4">

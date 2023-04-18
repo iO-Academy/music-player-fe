@@ -1,5 +1,7 @@
 import {Link, useNavigate, useParams} from "react-router-dom";
 import AlbumList from "../../components/AlbumList";
+import {useEffect, useState} from "react";
+import Loading from "../../components/Loading";
 
 
 function Artist({playSong}) {
@@ -7,29 +9,19 @@ function Artist({playSong}) {
 
     const navigate = useNavigate()
 
-    const artist = {
-        "name": "Billie Eilish",
-        "albums": [
-            {
-                "name": "When We All Fall Asleep, Where Do We Go?",
-                "songs": [
-                    "bad guy",
-                    "bury a friend",
-                    "you should see me in a crown"
-                ],
-                "artwork_url": "https://example.com/billie_eilish_when_we_all_fall_asleep.jpg"
-            },
-            {
-                "name": "Happier Than Ever",
-                "songs": [
-                    "NDA",
-                    "Therefore I Am",
-                    "Happier Than Ever"
-                ],
-                "artwork_url": "https://example.com/billie_eilish_happier_than_ever.jpg"
-            }
-        ]
+    const [artist, setArtist] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
+
+    const fetchArtist = async () => {
+        const response = await fetch('/artist.json?name=' + encodeURI(artistName))
+        const artist = await response.json()
+        setArtist(artist)
+        setIsLoading(false)
     }
+
+    useEffect(() => {
+        fetchArtist()
+    }, [])
 
     return (
         <div className="row align-items-start gx-5 h-75 p-5 overflow-x-auto">
@@ -40,7 +32,15 @@ function Artist({playSong}) {
             </div>
             <div className="col">
                 <div className="row">
-                    {artist.albums.map(album => <AlbumList key={album.name} album={album} playSong={playSong} artist={artist.name} />)}
+                    {artist && artist.albums.map(album =>
+                        <AlbumList
+                            key={album.name}
+                            album={album}
+                            playSong={playSong}
+                            artist={artist.name}
+                        />
+                    )}
+                    {isLoading && <div className={"col"}><Loading /></div>}
                 </div>
             </div>
         </div>

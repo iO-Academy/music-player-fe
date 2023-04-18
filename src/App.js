@@ -9,6 +9,7 @@ import Artists from "./pages/Artists";
 import Artist from "./pages/Artist";
 import Nav from "./components/Nav";
 import NowPlaying from "./components/NowPlaying";
+import NothingPlaying from "./components/NothingPlaying";
 function App() {
 
     const [playingSong, setPlayingSong] = useState(false);
@@ -28,7 +29,11 @@ function App() {
                           <Route path="/artists" element={<Artists />} />
                           <Route path="/artists/:artistName" element={<Artist playSong={playSong} />} />
                       </Routes>
-                      {playingSong && <NowPlaying playingSong={playingSong} />}
+
+                      {playingSong ?
+                          <NowPlaying playingSong={playingSong} /> :
+                          <NothingPlaying />
+                      }
                   </main>
               </div>
           </div>
