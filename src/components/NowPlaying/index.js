@@ -46,6 +46,10 @@ function NowPlaying({playingSong}) {
         play()
     }, [])
 
+    useEffect(() => {
+        restart()
+    }, [playingSong])
+
 
     return (
         <div className="row p-3 pt-4 mt-1 h-25 light-blue">
