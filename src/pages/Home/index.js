@@ -5,7 +5,7 @@ import PopularAlbums from "../../components/PopularAlbums";
 function Home({playSong}) {
 
     return (
-        <div className="row align-items-start gx-5 h-75 p-5">
+        <div className="row align-items-start gx-5 h-75 p-5 overflow-x-auto">
             <h1 className="col-12 mb-5">Home</h1>
             <RecentlyPlayed playSong={playSong} />
             <Artists />

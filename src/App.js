@@ -10,9 +10,11 @@ import Artist from "./pages/Artist";
 import Nav from "./components/Nav";
 import NowPlaying from "./components/NowPlaying";
 import NothingPlaying from "./components/NothingPlaying";
+import Error from "./components/Error";
 function App() {
 
     const [playingSong, setPlayingSong] = useState(false);
+    const [errorMsg, setError] = useState(false)
 
     const playSong = (name, artist, artwork) => {
         setPlayingSong({name: name, artist: artist, artwork: artwork})
@@ -30,8 +32,10 @@ function App() {
                           <Route path="/artists/:artistName" element={<Artist playSong={playSong} />} />
                       </Routes>
 
+                      <Error msg={errorMsg} />
+
                       {playingSong ?
-                          <NowPlaying playingSong={playingSong} /> :
+                          <NowPlaying setError={setError} playingSong={playingSong} /> :
                           <NothingPlaying />
                       }
                   </main>

@@ -1,9 +1,6 @@
-import {
-    Link
-} from "react-router-dom";
 import {useEffect, useState} from "react";
 
-function NowPlaying({playingSong}) {
+function NowPlaying({playingSong, setError}) {
 
     const [playTime, setPlayTime] = useState('0:00')
     const [playWidth, setPlayWidth] = useState(0)
@@ -42,12 +39,29 @@ function NowPlaying({playingSong}) {
         audioElement.currentTime = 0
     }
 
+    const fetchSongPlaying = async () => {
+        let response = await fetch('recentsongs.json', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({name: playingSong.name, artist: playingSong.artist})
+        })
+        return await response.json()
+    }
+
     useEffect(() => {
         play()
     }, [])
 
     useEffect(() => {
-        restart()
+        fetchSongPlaying()
+        .then(() => {
+            restart()
+        })
+        .catch((e) => {
+          setError(e.message)
+        })
     }, [playingSong])
 
 

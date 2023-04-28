@@ -1,6 +1,3 @@
-import {
-    Link
-} from "react-router-dom";
 import Album from "../Album";
 import {useEffect, useState} from "react";
 import Loading from "../Loading";

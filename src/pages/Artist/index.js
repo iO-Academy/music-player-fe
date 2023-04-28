@@ -3,7 +3,6 @@ import AlbumList from "../../components/AlbumList";
 import {useEffect, useState} from "react";
 import Loading from "../../components/Loading";
 
-
 function Artist({playSong}) {
     const {artistName} = useParams();
 
