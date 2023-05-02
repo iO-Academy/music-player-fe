@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {
     BrowserRouter,
     Routes,
@@ -19,6 +19,25 @@ function App() {
     const playSong = (name, artist, artwork) => {
         setPlayingSong({name: name, artist: artist, artwork: artwork})
     }
+
+    const updateSongPlay = async () => {
+        const response = await fetch('songPlayed.php', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: playingSong.name,
+                artist: playingSong.artist
+            })
+        }).catch(() => {
+            console.error('Unable to POST played song')
+        })
+    }
+
+    useEffect(() => {
+        updateSongPlay()
+    }, [playingSong])
 
   return (
       <BrowserRouter>
