@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installation
+
+- Clone this repository
+- `cd` into the project and run `npm install`
+- Make sure to update the `BASE_URL` const found in `src/settings.js` to be correct for your API
+
 ## Available Scripts
 
 In the project directory, you can run:
