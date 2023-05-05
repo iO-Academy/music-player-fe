@@ -20,27 +20,6 @@ function App() {
         setPlayingSong({name: name, artist: artist, artwork: artwork})
     }
 
-    const updateSongPlay = async () => {
-        const response = await fetch('songPlayed.php', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: playingSong.name,
-                artist: playingSong.artist
-            })
-        })
-
-        if (response.status !== 201) {
-            console.error('Unable to POST played song')
-        }
-    }
-
-    useEffect(() => {
-        updateSongPlay()
-    }, [playingSong])
-
   return (
       <BrowserRouter>
           <div className="container-fluid h-100 text-light">

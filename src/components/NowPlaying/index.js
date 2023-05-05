@@ -40,7 +40,7 @@ function NowPlaying({playingSong, setError}) {
     }
 
     const fetchSongPlaying = async () => {
-        let response = await fetch('recentsongs.json', {
+        let response = await fetch('/songPlayed.php', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
