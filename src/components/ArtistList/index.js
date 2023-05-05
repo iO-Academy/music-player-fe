@@ -12,6 +12,7 @@ function ArtistList({artist}) {
 
                 {artist.albums.map(album =>
                     <Album
+                        key={album.name}
                         name={album.name}
                         songCount={album.songs.length+1}
                         artwork={album.artwork_url}

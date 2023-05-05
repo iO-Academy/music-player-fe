@@ -3,7 +3,7 @@ import AlbumList from "../../components/AlbumList";
 import {useEffect, useState} from "react";
 import Loading from "../../components/Loading";
 
-function Artist({playSong}) {
+function Artist({playSong, setError}) {
     const {artistName} = useParams();
 
     const navigate = useNavigate()
@@ -13,9 +13,14 @@ function Artist({playSong}) {
 
     const fetchArtist = async () => {
         const response = await fetch('/artist.json?name=' + encodeURI(artistName))
-        const artist = await response.json()
-        setArtist(artist)
-        setIsLoading(false)
+
+        if (!response.status === 200) {
+            setError(`Unable to fetch artist '${artistName}`)
+        } else {
+            const artist = await response.json()
+            setArtist(artist)
+            setIsLoading(false)
+        }
     }
 
     useEffect(() => {

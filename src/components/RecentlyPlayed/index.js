@@ -2,16 +2,21 @@ import Song from "../Song";
 import {useEffect, useState} from "react";
 import Loading from "../Loading";
 
-function RecentlyPlayed({playSong}) {
+function RecentlyPlayed({playSong, setError}) {
 
     const [songs, setSongs] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchSongs = async () => {
         const response = await fetch('recentsongs.json')
-        const recentSongs = await response.json()
-        setSongs(recentSongs)
-        setIsLoading(false)
+
+        if (!response.ok) {
+            setError('Unable to fetch recent songs')
+        } else {
+            const recentSongs = await response.json()
+            setSongs(recentSongs)
+            setIsLoading(false)
+        }
     }
 
     useEffect(() => {
@@ -34,8 +39,6 @@ function RecentlyPlayed({playSong}) {
                 )
             }
             {isLoading && <Loading />}
-
-
         </div>
     );
 }

@@ -2,7 +2,7 @@ import Album from "../Album";
 import {useEffect, useState} from "react";
 import Loading from "../Loading";
 
-function PopularAlbums() {
+function PopularAlbums({setError}) {
 
     const [albums, setAlbums] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
@@ -10,8 +10,13 @@ function PopularAlbums() {
     const fetchAlbums = async () => {
         const response = await fetch('popularAlbums.json')
         const albums = await response.json()
-        setAlbums(albums)
-        setIsLoading(false)
+
+        if (!response.ok) {
+            setError('Unable to fetch popular albums')
+        } else {
+            setAlbums(albums)
+            setIsLoading(false)
+        }
     }
 
     useEffect(() => {

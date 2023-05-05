@@ -4,16 +4,21 @@ import {useEffect, useState} from "react";
 import Loading from "../../components/Loading";
 
 
-function Artists() {
+function Artists({setError}) {
 
     const [allArtists, setArtists] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchArtists = async () => {
         const response = await fetch('/artists.json')
-        const artists = await response.json()
-        setArtists(artists)
-        setIsLoading(false)
+
+        if (!response.ok) {
+            setError('Unable to fetch artists')
+        } else {
+            const artists = await response.json()
+            setArtists(artists)
+            setIsLoading(false)
+        }
     }
 
     useEffect(() => {

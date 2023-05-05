@@ -9,9 +9,9 @@ function AlbumList({album, artist, playSong}) {
 
                 {album.songs.map(song =>
                     <Song
-                        key={song}
-                        name={song}
-                        length={"3:28"}
+                        key={song.name}
+                        name={song.name}
+                        length={song.length}
                         playSong={playSong}
                         subhead={"Played 5 times"}
                         artist={artist}

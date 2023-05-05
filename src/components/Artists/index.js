@@ -5,7 +5,7 @@ import ArtistSummary from "../ArtistSummary";
 import {useEffect, useState} from "react";
 import Loading from "../Loading";
 
-function Artists() {
+function Artists({setError}) {
 
     const [artists, setArtists] = useState(false)
     const [artistsCount, setArtistsCount] = useState(false)
@@ -13,6 +13,11 @@ function Artists() {
 
     const fetchArtists = async () => {
         const response = await fetch('artists.json')
+
+        if (!response.ok) {
+            setError('Unable to fetch artists')
+        }
+
         return await response.json()
     }
 

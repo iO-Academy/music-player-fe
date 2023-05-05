@@ -30,9 +30,11 @@ function App() {
                 name: playingSong.name,
                 artist: playingSong.artist
             })
-        }).catch(() => {
-            console.error('Unable to POST played song')
         })
+
+        if (response.status !== 201) {
+            console.error('Unable to POST played song')
+        }
     }
 
     useEffect(() => {
@@ -46,9 +48,9 @@ function App() {
                   <Nav />
                   <main className="dark-blue col-11 h-100">
                       <Routes>
-                          <Route path="/" element={<Home playSong={playSong} />} />
-                          <Route path="/artists" element={<Artists />} />
-                          <Route path="/artists/:artistName" element={<Artist playSong={playSong} />} />
+                          <Route path="/" element={<Home playSong={playSong} setError={setError} />} />
+                          <Route path="/artists" element={<Artists setError={setError} />} />
+                          <Route path="/artists/:artistName" element={<Artist playSong={playSong} setError={setError} />} />
                       </Routes>
 
                       <Error msg={errorMsg} />
