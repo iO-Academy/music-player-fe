@@ -1,6 +1,7 @@
 import Album from "../Album";
 import {useEffect, useState} from "react";
 import Loading from "../Loading";
+import BASE_URL from "../../settings";
 
 function PopularAlbums({setError}) {
 
@@ -8,7 +9,7 @@ function PopularAlbums({setError}) {
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchAlbums = async () => {
-        const response = await fetch('popularAlbums.json')
+        const response = await fetch(BASE_URL + 'popularAlbums.php')
         const albums = await response.json()
 
         if (!response.ok) {

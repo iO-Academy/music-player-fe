@@ -1,6 +1,7 @@
 import Song from "../Song";
 import {useEffect, useState} from "react";
 import Loading from "../Loading";
+import BASE_URL from "../../settings";
 
 function RecentlyPlayed({playSong, setError}) {
 
@@ -8,7 +9,7 @@ function RecentlyPlayed({playSong, setError}) {
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchSongs = async () => {
-        const response = await fetch('recentsongs.json')
+        const response = await fetch(BASE_URL + 'recentSongs.php')
 
         if (!response.ok) {
             setError('Unable to fetch recent songs')
