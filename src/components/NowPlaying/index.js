@@ -55,13 +55,13 @@ function NowPlaying({playingSong, setError}) {
     }, [])
 
     useEffect(() => {
-        fetchSongPlaying()
-        .then(() => {
+        // fetchSongPlaying()
+        // .then(() => {
             restart()
-        })
-        .catch((e) => {
-          setError(e.message)
-        })
+        // })
+        // .catch((e) => {
+        //   console.warn(e.message)
+        // })
     }, [playingSong])
 
 
