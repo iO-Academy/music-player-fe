@@ -40,29 +40,14 @@ function NowPlaying({playingSong, setError}) {
         audioElement.currentTime = 0
     }
 
-    const fetchSongPlaying = async () => {
-        let response = await fetch(BASE_URL + 'songPlayed.php', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({name: playingSong.name, artist: playingSong.artist})
-        })
-        return await response.json()
-    }
+
 
     useEffect(() => {
         play()
     }, [])
 
     useEffect(() => {
-        fetchSongPlaying()
-        .then(() => {
-            restart()
-        })
-        .catch((e) => {
-          setError(e.message)
-        })
+        restart()
     }, [playingSong])
 
 
