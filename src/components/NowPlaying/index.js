@@ -40,8 +40,6 @@ function NowPlaying({playingSong, setError}) {
         audioElement.currentTime = 0
     }
 
-
-
     useEffect(() => {
         play()
     }, [])

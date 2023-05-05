@@ -16,7 +16,6 @@ function Album({name, songCount, artwork, artistName}) {
                 </small>
             </div>
             <div className="fs-4">
-                <Link to={"/artists/" + artistName} className="bi bi-arrow-right-square-fill"></Link>
             </div>
         </div>
     );

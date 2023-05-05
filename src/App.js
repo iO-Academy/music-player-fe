@@ -29,7 +29,6 @@ function App() {
                       <Routes>
                           <Route path="/" element={<Home playSong={playSong} setError={setError} />} />
                           <Route path="/artists" element={<Artists setError={setError} />} />
-                          <Route path="/artists/:artistName" element={<Artist playSong={playSong} setError={setError} />} />
                       </Routes>
 
                       <Error msg={errorMsg} />
