@@ -9,6 +9,7 @@ function Home({playSong, setError}) {
             <h1 className="col-12 mb-5">Home</h1>
             <Artists setError={setError} />
             <RecentlyPlayed />
+            <PopularAlbums />
         </div>
     );
 }
