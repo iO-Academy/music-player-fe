@@ -9,7 +9,7 @@ function PopularAlbums({setError}) {
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchAlbums = async () => {
-        const response = await fetch(BASE_URL + 'popularAlbums.php')
+        const response = await fetch('/popularAlbums.json')
         const albums = await response.json()
 
         if (!response.ok) {

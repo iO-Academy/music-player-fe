@@ -13,7 +13,7 @@ function Artist({playSong, setError}) {
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchArtist = async () => {
-        const response = await fetch(BASE_URL + '/artist.php?name=' + encodeURI(artistName))
+        const response = await fetch('/artist.json?name=' + encodeURI(artistName))
 
         if (!response.status === 200) {
             setError(`Unable to fetch artist '${artistName}`)

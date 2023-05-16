@@ -11,7 +11,7 @@ function Artists({setError}) {
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchArtists = async () => {
-        const response = await fetch(BASE_URL + '/artists.php')
+        const response = await fetch('/artists.json')
 
         if (!response.ok) {
             setError('Unable to fetch artists')
