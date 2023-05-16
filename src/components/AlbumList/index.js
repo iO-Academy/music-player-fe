@@ -13,7 +13,7 @@ function AlbumList({album, artist, playSong}) {
                         name={song.name}
                         length={song.length}
                         playSong={playSong}
-                        subhead={"Played 5 times"}
+                        subhead={`Played ${song.play_count} times`}
                         artist={artist}
                         artwork={album.artwork_url}
                     />
