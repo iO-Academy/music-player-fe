@@ -2,6 +2,7 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import AlbumList from "../../components/AlbumList";
 import {useEffect, useState} from "react";
 import Loading from "../../components/Loading";
+import BASE_URL from "../../settings";
 
 function Artist({playSong, setError}) {
     const {artistName} = useParams();
@@ -12,7 +13,7 @@ function Artist({playSong, setError}) {
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchArtist = async () => {
-        const response = await fetch('/artist.json?name=' + encodeURI(artistName))
+        const response = await fetch(BASE_URL + '/artist.php?name=' + encodeURI(artistName))
 
         if (!response.status === 200) {
             setError(`Unable to fetch artist '${artistName}`)

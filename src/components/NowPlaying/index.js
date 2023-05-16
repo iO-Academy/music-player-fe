@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import BASE_URL from "../../settings";
 
 function NowPlaying({playingSong, setError}) {
 
@@ -40,7 +41,7 @@ function NowPlaying({playingSong, setError}) {
     }
 
     const fetchSongPlaying = async () => {
-        let response = await fetch('/songPlayed.php', {
+        let response = await fetch(BASE_URL + 'songPlayed.php', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

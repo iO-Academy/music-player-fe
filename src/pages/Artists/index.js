@@ -2,6 +2,7 @@ import ArtistList from "../../components/ArtistList";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Loading from "../../components/Loading";
+import BASE_URL from "../../settings";
 
 
 function Artists({setError}) {
@@ -10,7 +11,7 @@ function Artists({setError}) {
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchArtists = async () => {
-        const response = await fetch('/artists.json')
+        const response = await fetch(BASE_URL + '/artists.php')
 
         if (!response.ok) {
             setError('Unable to fetch artists')
