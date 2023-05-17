@@ -40,6 +40,10 @@ html {
   border-color: #2c2f47!important;
 }
 
+.border-top {
+  border-color: #2c2f47!important;
+}
+
 a.bi {
   color: #f8f9fa;
 }
@@ -98,4 +102,9 @@ a.bi {
 .alert-danger.hide {
   opacity: 0;
   transition: opacity 1s;
+}
+
+.search {
+  bottom: 25%;
+  width: 90%;
 }

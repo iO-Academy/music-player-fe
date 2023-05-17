@@ -11,9 +11,11 @@ import Nav from "./components/Nav";
 import NowPlaying from "./components/NowPlaying";
 import NothingPlaying from "./components/NothingPlaying";
 import Error from "./components/Error";
+import Search from "./components/Search";
 function App() {
 
     const [playingSong, setPlayingSong] = useState(false);
+    const [showSearch, setShowSearch] = useState(false);
     const [errorMsg, setError] = useState(false)
 
     const playSong = (name, artist, artwork) => {
@@ -24,13 +26,15 @@ function App() {
       <BrowserRouter>
           <div className="container-fluid h-100 text-light">
               <div className="row h-100">
-                  <Nav />
+                  <Nav showSearch={setShowSearch} />
                   <main className="dark-blue col-11 h-100">
                       <Routes>
                           <Route path="/" element={<Home playSong={playSong} setError={setError} />} />
                           <Route path="/artists" element={<Artists setError={setError} />} />
                           <Route path="/artists/:artistName" element={<Artist playSong={playSong} setError={setError} />} />
                       </Routes>
+
+                      {showSearch && <Search showSearch={setShowSearch} playSong={playSong} setError={setError} />}
 
                       <Error msg={errorMsg} />
 
