@@ -108,3 +108,7 @@ a.bi {
   bottom: 25%;
   width: 90%;
 }
+
+.results {
+  max-height: 500px;
+}

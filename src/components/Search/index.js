@@ -9,7 +9,7 @@ function Search({showSearch, playSong, setError}) {
     const search = async (e) => {
         const searchTerm = e.target.value
         try {
-            const response = await fetch(BASE_URL + 'search.php?name=' + searchTerm)
+            const response = await fetch( BASE_URL + 'search.php?name=' + searchTerm)
             const searchResults = await response.json()
             setResults(searchResults)
         } catch(e) {
@@ -25,7 +25,7 @@ function Search({showSearch, playSong, setError}) {
 
             {
                 results.length > 0 &&
-                <div>
+                <div className={"overflow-x-auto results"}>
                     {
                         results.map(song =>
                             <Song
