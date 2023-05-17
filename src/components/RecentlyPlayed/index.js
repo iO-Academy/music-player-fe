@@ -9,7 +9,7 @@ function RecentlyPlayed({playSong, setError}) {
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchSongs = async () => {
-        const response = await fetch(BASE_URL + 'recentSongs.php')
+        const response = await fetch('recentSongs.json')
 
         if (!response.ok) {
             setError('Unable to fetch recent songs')
@@ -36,6 +36,8 @@ function RecentlyPlayed({playSong, setError}) {
                         length={song.length}
                         playSong={playSong}
                         artwork={song.artwork_url}
+                        is_fav={song.is_fav}
+                        setError={setError}
                     />
                 )
             }

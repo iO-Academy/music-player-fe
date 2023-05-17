@@ -43,6 +43,7 @@ function Artist({playSong, setError}) {
                             album={album}
                             playSong={playSong}
                             artist={artist.name}
+                            setError={setError}
                         />
                     )}
                     {isLoading && <div className={"col"}><Loading /></div>}

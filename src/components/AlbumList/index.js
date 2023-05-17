@@ -1,6 +1,6 @@
 import Song from "../Song";
 
-function AlbumList({album, artist, playSong}) {
+function AlbumList({album, artist, playSong, setError}) {
 
     return (
         <div className="col-4 mb-4">
@@ -16,6 +16,8 @@ function AlbumList({album, artist, playSong}) {
                         subhead={`Played ${song.play_count} times`}
                         artist={artist}
                         artwork={album.artwork_url}
+                        is_fav={song.is_fav}
+                        setError={setError}
                     />
                 )}
 
