@@ -8,8 +8,8 @@ function Home({playSong, setError}) {
         <div className="row align-items-start gx-5 h-75 p-5 overflow-x-auto">
             <h1 className="col-12 mb-5">Home</h1>
             <Artists setError={setError} />
-            <RecentlyPlayed />
-            <PopularAlbums />
+            <RecentlyPlayed playSong={playSong} setError={setError} />
+            <PopularAlbums setError={setError} />
         </div>
     );
 }
