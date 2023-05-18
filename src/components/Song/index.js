@@ -16,7 +16,7 @@ function Song({name, subhead, length, playSong, artist, artwork, is_fav = false,
             </div>
             <div>
                 <i className={"bi " + (isFavourite ? "bi-heart-fill" : "bi-heart")} onClick={() => {
-                    favouriteSong(name).then(response => {
+                    favouriteSong(name, artist).then(response => {
                         setIsFavourite(!isFavourite)
                     }).catch(e => {
                         setError(e.message)
