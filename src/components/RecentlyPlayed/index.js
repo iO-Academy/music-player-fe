@@ -9,7 +9,7 @@ function RecentlyPlayed({playSong, setError}) {
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchSongs = async () => {
-        const response = await fetch('recentSongs.json')
+        const response = await fetch(BASE_URL + 'recentSongs.php')
 
         if (!response.ok) {
             setError('Unable to fetch recent songs')
