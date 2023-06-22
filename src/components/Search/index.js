@@ -27,9 +27,9 @@ function Search({showSearch, playSong, setError}) {
                 results.length > 0 &&
                 <div className={"overflow-x-auto results"}>
                     {
-                        results.map(song =>
+                        results.map((song, index) =>
                             <Song
-                                key={song.name}
+                                key={index}
                                 name={song.name}
                                 length={song.length}
                                 playSong={playSong}
